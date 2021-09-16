@@ -1,0 +1,49 @@
+1. Lead is created by Channel Partner (4 categories- designer, architect, individual, channel partner)
+architect, designer - share given by percentage
+individual, channel partner - share given by fixed amount
+
+2. Lead is auto-assigned to a sales-person (having least number of pending leads).
+Sales-person notified. 
+Manager notified (with all details of lead and sales-person working on it).
+
+3. a) Sales-person marks the lead as "Work in Progress".
+b) If the lead status is not changed, Lead gets re-assigned to other sales-person according to the time limit.
+DEFAULT=24 hours
+Admin will have the facility to set a particular time for a specific lead.
+Sales-person notified. 
+Manager notified.
+
+4. a) On confirmation of lead, sales-person fixes a visit of site-engineer.
+Site-engineer notified.
+b) Site engineer visits the location, records his status(pending, visited, completed) and a remark of the visit.
+
+5. Lead reverts back to sales-person for financial communication.
+Sales-person notified.
+
+6. Sales-person fixes an amount and lead is transferred to account-officer for status of payment (full or partial).
+Manager notified.
+Account-officer notified.
+
+7. After the confirmation of payment is received by account-officer, sales-person is notified and he/she informs the customer.
+
+8. After the product is ready to be shipped, the sales-person again fix the installation date, on communication with the customer and marks the lead as COMPLETED.
+site-engineer notified.
+
+9. Site-engineer visits the customer's place for installation of the product.
+
+10. After installation, site engineer marks lead status as COMPLETED by him and uploads the feedback form.
+manager notified.
+
+11. Account-officer confirms full payment has been received and marks the lead as COMPLETED.
+manager notified.
+
+12. Manager rechecks and confirms all the steps have been successfully completed by sales, site-engineer and account-officer.
+
+13. Finally, Manager marks the lead as COMPLETED.
+
+14. After this, manager triggers the payment process of channel-partner to account-officer.
+account-officer notified.
+
+15. After successful payment of channel-partner (manager notified) and verification from manager, Lead is marked CLOSED by the manager.
+
+Note- Manager can check the status of lead anytime during the process.

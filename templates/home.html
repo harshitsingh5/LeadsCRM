@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XYZ | Login </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/login.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+
+
+	<style>
+
+		*{
+			font-family: 'SF';
+		}
+		.wrapper{
+			width:90%;
+			padding-left:5%;
+			padding-right:5%;
+		}
+
+
+		.heading{
+			font-size:2.2em;
+			font-family: 'PN-Bold';
+			margin-top:8vh;
+		}
+
+		.content{
+			margin-top:10px;
+			font-size: 1.2em;
+			text-align: justify;
+		}
+
+		.feature_box_wrap{
+			margin-top:40px;
+			display: flex;
+			flex-direction: row;
+			align-items: stretch;
+		}
+
+		.box{
+			margin-left:20px;
+/*			border:1px solid #dadada;*/
+			box-shadow:5px 5px 10px 1px rgba(0,0,0,0.1);
+			flex:1;
+			text-align: center;
+			padding:30px 15px 30px 15px;
+			border-radius:10px;
+
+
+		}
+
+		.box:hover{
+			/*transition: 0.3s;
+			transform: scale(0.9);*/
+			cursor: pointer;
+			animation:shrink-grow 0.5s linear;
+		}
+
+		@keyframes shrink-grow{
+			from{
+				transform: scale(0.9);
+
+			}
+			to{
+				transform: scale(1);
+			}
+
+		}
+
+
+		.box div{
+			margin-top:15px;
+			font-family: 'SF';
+			font-weight: bold;
+
+		}
+
+
+
+		@media only screen and (max-width: 600px){
+			.feature_box_wrap{
+				display: flex;
+				flex-direction: column;
+			}
+
+			.box{
+				margin-top:20px;
+			}
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="wrapper">
+
+		<div class="heading">Home</div>
+
+	<div class="content">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+	</div>
+
+	<div class="feature_box_wrap">
+		<div class="box">
+			<img src="../static/img/1.png" style="width:90px;">
+			<div>
+				Lorem ipsum dolor sit amet consectetur
+			</div>
+		</div>
+
+		<div class="box">
+			<img src="../static/img/2.png" style="width:90px;">
+			<div>
+				Lorem ipsum dolor sit amet consectetur
+			</div>
+		</div>
+
+		<div class="box">
+			<img src="../static/img/3.png" style="width:90px;">
+			<div>
+				Lorem ipsum dolor sit amet consectetur
+			</div>
+		</div>
+
+		<div class="box">
+			<img src="../static/img/4.png" style="width:90px;">
+			<div>
+				Lorem ipsum dolor sit amet consectetur
+			</div>
+		</div>
+	</div>
+
+
+
+	</div>
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+	  {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+	      swal('{{message}}');
+	    {% endfor %}
+	  {% endif %}
+	{% endwith %}
+	</script>
+
+</body>
+</html>

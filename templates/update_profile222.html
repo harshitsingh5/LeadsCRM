@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XYZ | Update Profile </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <link rel="stylesheet" href="../static/css/font.css">
+  <link rel="stylesheet" href="../static/css/simple-grid.css">
+</head>
+<body>
+
+
+        <img class="logo" src="../static/img/logo.png" />
+<div class="wrap">
+    <div class="left_area">
+
+
+
+        <!-- <div class="dont_have_acc">
+          Don't Have an Account?<br>
+          <a href="/get/sign">CREATE NEW ACCOUNT</a>
+        </div> -->
+    </div>
+
+    <div class="input_area_up">
+
+          <div class="col-12 wel_txt_up" style="font-family:'PN-Bold' ">
+          UPDATE PROFILE
+
+          </div>
+
+        <br><br>
+
+        <form name="form" onsubmit="return valid();" action="/update-profile/{{uid}}" method="POST">
+
+          <div style="color:red;font-size:1em;font-family:'SF' " id="namemsg"></div>
+          <input type="text" placeholder="FULL NAME" name="full_name">
+
+          <div style="color:red;font-size:1em;font-family:'SF' " id="emailmsg"></div>
+          <input type="text" placeholder="EMAIL ADDRESS" name="email">
+
+          <select id="exampleInputEmail1" name="account" class="form-control">
+            <option value="not_a_channel_partner">Not a channel Partner</option>
+            <option value="designer">Designer</option>
+            <option value="architect">Architect</option>
+            <option value="individual">Individual</option>
+            <option value="channel_partner">Channel Partner</option>
+          </select>
+
+
+          <br><br>
+          <button class="login_btn">UPDATE</button>
+
+        </form>
+    </div>
+</div>
+
+
+<script>
+
+
+
+function valid(){
+  var name=document.forms["form"]["full_name"];
+  var email=document.forms["form"]["email"];
+
+  var emailpatt=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+
+
+  if(name.value==''){
+    document.getElementById("namemsg").innerHTML="Enter Name";
+  }else{
+    document.getElementById("namemsg").innerHTML="";
+  }
+
+  if(!(email.value.match(emailpatt))){
+      document.getElementById("emailmsg").innerHTML="Enter Valid Email";
+  }else{
+      document.getElementById("emailmsg").innerHTML="";
+    }
+
+  if(name.value=='' || !(email.value.match(emailpatt)) ){
+    return false;
+  }
+
+
+  return true;
+
+
+
+}
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+</body>
+</html>

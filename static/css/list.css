@@ -1,0 +1,44 @@
+.list_item{
+	padding-top:10px;
+	padding-bottom:20px;
+	border-bottom:1px solid #c7c7c7;
+	margin-top:20px;
+
+}
+
+a{
+	color:#000;
+}
+
+
+.name_date_wrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+
+.list_name{
+	font-family: 'PN-Bold';
+	font-size:1.5em;
+	margin-top:5px;
+	flex:0.7;
+}
+.date{
+	margin-top:8px;
+	flex:0.3;
+}
+
+.loc_wrap{
+	display: flex;
+	flex-direction:row;
+	align-items: center;
+	margin-top:5px;
+}
+
+
+
+.loc{
+	font-size: 1.2em;
+	margin-left:8px;
+}

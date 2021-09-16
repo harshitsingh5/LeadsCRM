@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+	<style>
+
+		.heading
+		{
+			display: flex;
+			flex-direction: row;
+			font-family:proxima-nova,sans-serif;
+	        font-weight:bold;
+	        border-bottom: 1px solid lightgrey;
+	        height: 100px;
+	        max-width: 700px;
+	        margin: 40px auto 40px auto;
+	    }
+	    .part{
+             flex: 3;
+             order: 1;
+	    }
+	    <!--.icon{
+	    	flex: 1;
+	    	order: 2;
+	    }-->
+
+	     .row-a{
+	     	flex: 3;
+	     	 order: 2;
+	     }
+	     .row-b{
+	     	flex:1;
+	     	order: 2;
+	     }
+	     .id{
+            font-family: proxima-nova,sans-serif;
+		font-size: 12px;
+		line-height: 20px;
+		margin-top: 0.5px;
+		margin-bottom: 10px;
+
+	     }
+	     .name{
+              font-family: proxima-nova,sans-serif;
+		font-weight: bold;
+		font-size:24px;
+		line-height: 20px;
+	     }
+	     .date{
+              font-family: proxima-nova,sans-serif;
+              line-height: 2px;
+		font-size: 12px;
+		text-decoration-color: lightgrey;
+		color: grey;
+	     }
+	     .main{
+	     	height: 120px;
+	     	max-width: 700px;
+	     	margin:40px auto 40px auto;
+	     	border-bottom: 1px solid lightgrey;
+	     	display: flex;
+	     	line-height: 3px;
+	     }
+	     .button
+	     {
+	     	background-color: #4CAF50;
+  border: 25px;
+  color: white;
+  border-radius: 12px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+	     }
+
+	     .btn-secondary {
+    color: #fff;
+    background-color: white;
+    border-color: white;
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: white;
+    border-color: white;
+}
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: white;
+    border-color: white;
+}
+
+
+	</style>
+</head>
+<body>
+	<div class="heading">
+		<div class="part"><h1>Unattended Leads</h1></div>
+
+		<div class="icon">
+			<div class="btn-group">
+						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://img.icons8.com/color/48/000000/sorting-arrows.png">
+						</button>
+
+						<div class="dropdown-menu dropdown-menu-right">
+						  <button class="dropdown-item" type="button">Name<img src="https://img.icons8.com/material-rounded/24/000000/up.png"></button>
+						  <button class="dropdown-item" type="button">Date<img src="https://img.icons8.com/material-rounded/24/000000/up.png"></button>
+						  <button class="dropdown-item" type="button">Location<img src="https://img.icons8.com/material-rounded/24/000000/up.png"></button>
+						</div>
+					</div>
+
+					</div>
+
+	</div>
+<!-- <div class="main">
+	<div class="row-a">
+       <div class="id"><p>THIS IS SAMPLE Lead Id:10924730</p></div>
+       <div class="name"><p>Rajat Yadav</p></div>
+       <div class="date"><p>02/03/2011</p></div>
+       <div class="location"><p><ion-icon name="pin"></ion-icon>Kanpur</p></div>
+	</div>
+	<div class="row-b">
+		<div class="button"href="/manager-approve/{{lead_id}}">Approve</div>
+	</div>
+</div> -->
+<!--block starts here-->
+{% if result %}
+{% for l in result %}
+<a href="/manager-lead-details/{{l['lead'].lead_id}}">
+<div class="main">
+	<div class="row-a">
+       <div class="id"><p>Lead Id: {{l['lead'].lead_id}}</p></div>
+       <div class="name"><p>{{l['client'].name}}</p></div>
+       <div class="date"><p>{{l['lead'].generation_date}}</p></div>
+       <div class="location"><p><ion-icon name="pin"></ion-icon>{{l['client'].city}}</p></div>
+	</div>
+	<div class="row-b">
+		<a href="/manager-approve/{{l['lead'].lead_id}}">
+		<div class="button" >Approve</div>
+	</a>
+	</div>
+</div>
+</a>
+{% endfor %}
+{% else %}
+<div style="text-align: center;margin-top:50px;font-family: 'SF';color:#7d7d7d;	">No Leads Found</div>
+{% endif %}
+<!--block ends here-->
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+
+	</body>
+</html>

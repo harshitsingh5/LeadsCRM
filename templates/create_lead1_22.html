@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Create Lead 1</title>
+ <link rel="stylesheet" href="../static/css/font.css">
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <style>
+
+input
+
+*{
+  font-family: 'SF-Regular';
+}
+
+     .b1{
+         padding-top:200px;
+     }
+h4
+{
+  font-family: 'SF-Regular' !important;
+color:grey;
+}
+#logo
+{
+    margin-top:4%;
+}
+.form-group
+{
+  width:25%;
+  min-width:280px;
+  height:30%;
+  padding-top:20px;
+
+}
+img
+{
+  width: 100px;
+  height: 60px;
+}
+#create_account
+{
+  width:25%;
+  background-color:#E15249;
+  border-style:none;
+}
+input
+{
+  padding-top:20px;
+  padding-bottom:20px;
+  margin-top: 10px;
+  margin-bottom:10px;
+  border:1px solid #B8B7B7 ;
+
+}
+
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{
+  display: none;
+  }
+select
+{
+  margin-top:10px;
+}
+@media only screen and (max-width: 600px) {
+.header
+{
+  margin-left: 10%;
+}
+.b1
+</style>
+ </head>
+ <body>
+
+
+<center>
+    <div class="b1">
+     <form style="margin-top:30px;" action="/create-lead1" method="POST">
+        <b style="font-size: 20px;padding-bottom:20px;">CREATE LEAD</b>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="CLIENT NAME" >
+                  <input maxlength="10"
+                    oninput="this.value=this.value.slice(0,this.maxLength)"
+                   type="number" class="form-control" id="mobile_number" name="mobile_number" placeholder="CLIENT CONTACT NUMBER">
+                </div>
+
+
+<input type="submit" class="btn btn-primary" id="create_account" value='NEXT'>
+                <br>
+              </form>
+    </div>
+            </center>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript">
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  swal('{{message}}');
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            </script>
+</body>
+</html>

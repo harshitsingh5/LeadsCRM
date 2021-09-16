@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>manager_select_sales</title>
+	 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<style type="text/css">
+	@media only  screen and (max-width:770px)
+	{
+
+	}
+     .lead{
+     	display:flex;
+		flex-direction: row;
+		font-family: proxima-nova,sans-serif;
+		border-bottom: 1px solid lightgrey;
+		height: 40px;
+		max-width: 700px;
+		margin:40px auto 40px auto;
+		flex: 1;
+     }
+	.name{
+
+		font-size: 24px;
+		order: 1;
+		flex: 3;
+	}
+	.pending{
+		flex:1;
+		font-size: 16px;
+		order: 2;
+	}
+		.main
+		{
+			display: flex;
+			flex-direction: row;
+			font-family:proxima-nova,sans-serif;
+	        font-weight:bold;
+	        border-bottom: 1px solid lightgrey;
+	        height: 120px;
+	        max-width: 700px;
+	        margin: 40px auto 40px auto;
+	    }
+
+
+	     .row1{
+	     	flex: 3;
+	     	 order: 2;
+	     	 font-size: 30px;
+	     }
+	     .row2{
+	     	flex:1;
+	     	order: 2;
+	     }
+	     	     .button
+	     {
+
+  border:solid 2px blue;
+  color: blue;
+  border-radius: 12px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+	     }
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="row1"><p>Assign to Sales member</p><p style="font-size: 16px;">Lead Id:{{lead_id}}</p>
+		</div>
+		<div class="row2">
+			<a href="/manager-select-sales-skip/{{lead_id}}"><div class="button">Skip</div></a>
+		</div>
+
+	</div>
+	<!--block starts-->
+{% if result %}
+	{% for lead in result %}
+	<a href="/manager-select-sales/{{lead_id}}/{{lead['uid']}}">
+	<div class="lead">
+
+	<div class="name">{{lead['name']}}</div>
+	<div class="pending">Pending Leads: {{lead['pending_leads']}}</div>
+
+     </div>	</a>
+		 {% endfor %}
+		{% endif %}
+     <!--block ends-->
+		 <!-- <a href="/manager-select-sales/{{lead_id}}/{{uid}}">
+    <div class="lead">
+
+	<div class="name">THIS IS SAMPLE Rajat Yadav</div>
+	<div class="pending">Pending Leads: 2</div>
+</div></a> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+
+	</body>
+	</html>

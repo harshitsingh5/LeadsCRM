@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Login</title>
+
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <style>
+@font-face  {
+  font-family:'ProximaNova-Bold';
+  src: url("ProximaNova-Bold.ttf") format('truetype');
+
+}
+@font-face {
+  font-family: 'SF-Regular';
+src: url("SF-Regular.ttf") format('truetype');
+}
+b
+{
+  font-family: 'ProximaNova-Bold' !important;
+}
+input
+{
+  font-family: 'SF-Regular' !important;
+}
+h4
+{
+  font-family: 'SF-Regular' !important;
+color:grey;
+}
+#logo
+{
+    margin-top:4%;
+}
+.form-group
+{
+  width:25%;
+  min-width:280px;
+  height:30%;
+  padding-top:20px;
+
+}
+img
+{
+  width: 100px;
+  height: 60px;
+}
+#create_account
+{
+  width:25%;
+  background-color:#E15249;
+  border-style:none;
+}
+input
+{
+  padding-top:20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+margin-bottom:20px;
+font-family: 'ProximaNova-Bold' ;
+border:1px solid #B8B7B7 ;
+
+}
+
+select
+{
+  margin-top:10px;
+}
+@media only screen and (max-width: 600px) {
+.header
+{
+  margin-left: 10%;
+}
+}
+</style>
+ </head>
+ <body>
+
+
+<center>
+     <form style="margin-top:180px;" action="/update-profile/{{uid}}" method="POST">
+        <b style="font-size: 25px;padding-bottom:25px;">UPDATE PROFILE</b>
+                <div class="form-group">
+
+
+
+  <select id="exampleInputEmail1" name="account" class="form-control">
+      <option value="not_a_channel_partner">Not a channel Partner</option>
+      <option value="designer">Designer</option>
+      <option value="architect">Architect</option>
+      <option value="individual">Individual</option>
+      <option value="channel_partner">Channel Partner</option>
+    </select>
+
+    <input type="text" name="full_name" class="form-control" id="exampleInputEmail1" aria-describedby="ProximaNova-Bold" placeholder="FULL NAME">
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="ProximaNova-Bold" placeholder="EMAIL ADDRESS">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="create_account">UPDATE</button><br>
+    </form>
+  </center>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        swal('{{message}}');
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  </script>
+</body>
+</html>

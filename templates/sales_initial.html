@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XYZ </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/admin.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+	<!-- <link rel="stylesheet" href="../static/css/simple-grid.css"> -->
+
+</head>
+<body>
+	<img src="../static/img/back_btn.png" style="width:40px;" class="back_btn" onclick="history.go(-1);return false;" />
+
+	<div class="wel_wrap">
+		{% if lead.lead_status_by_sales==3 %}
+		<div class="heading_b">Installation Date Remark</div>
+		{% else %}
+		<div class="heading_b">Initial Offer</div>
+		{% endif %}
+		</div>
+
+		<div class="status">
+			Lead id: {{lead.lead_id}}
+		</div>
+
+{% if lead.lead_status_by_sales==3 %}
+	<form action="/sales-installation-fix/{{lead.lead_id}}" method="POST">
+{% else %}
+		<form action="/sales-initial-offer/{{lead.lead_id}}" method="POST">
+{% endif %}
+		<div style="margin-top:10px;"></div>
+		<textarea class="sales_txtarea" name="remark"></textarea>
+		<br>
+			<button class="submit_btn">SAVE</button>
+	</form>
+
+	<br>
+
+	<div class="heading_sup mar_t">Remarks:</div>
+			<br>
+			<!-- Jinja 2 sales here starts -->
+			{% for r in remarks %}
+			<div style="display: flex;flex-direction: row;align-items: center;margin-top:30px">
+					<div class="date_min">{{r.date}}</div>
+				<hr class="hr_sub">
+			</div>
+			<div class="heading_sub">{{account}}:</div>
+			<div class="remark_cont" style="margin-top:5px;">
+					{{r.remark}}
+			</div>
+{% endfor %}
+		<!-- Jinja2 sales ends here -->
+
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script type="text/javascript">
+		  {% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    {% for message in messages %}
+		      swal('{{message}}');
+		    {% endfor %}
+		  {% endif %}
+		{% endwith %}
+		</script>
+</body>
+</html>

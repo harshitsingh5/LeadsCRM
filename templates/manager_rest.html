@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin | XYZ </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/list.css">
+	<link rel="stylesheet" href="../static/css/admin.css">
+	<link rel="stylesheet" href="../static/css/simple-grid.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+
+
+
+</head>
+<body>
+
+{% if val==1 %}
+<div class="heading_b">Approved Leads</div>
+{% elif val==2 %}
+<div class="heading_b">Approved Leads</div>
+{% elif val==3 %}
+<div class="heading_b">Approved Leads</div>
+{% endif %}
+
+
+{% if result %}
+{% for lead in result %}
+<div class="list_item">
+	<a href="#">
+		<div clas="id">Lead Id:{{lead.lead_id}}</div>
+		<div class="name_date_wrap">
+			<div class="list_name">{{lead.lead_id}}</div>
+			<div class="date">{{lead.generation_date}}</div>
+		</div>
+		<div class="loc_wrap">
+			<img src="../static/img/loc.png" style="width:25px;"/>
+			<div class="loc">{{lead.client_id.city}}</div>
+		</div>
+	</a>
+</div>
+{% end for %}
+{% else %}
+<div style="text-align: center;margin-top:50px;font-size:1.5em,font-family: 'SF';color:#7d7d7d;	">No Leads Found</div>
+{% end if %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XYZ </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/dashboard.css">
+	<link rel="stylesheet" href="../static/css/simple-grid.css">
+</head>
+<body>
+
+
+<div class="sidebar">
+	<div class="logo">
+		<img src="../static/img/logo.png" class="logo"/>
+	</div>
+	<div class="sidebar_wrap">
+
+		<div class="icon_label_wrap">
+			<a href="/channel-home" target="iframe">
+				<img src="../static/img/home.png" class="icon" />
+				<div class="icon_label">Home</div>
+			</a>
+		</div>
+
+		<div class="icon_label_wrap">
+			<a href="/notifications" target="iframe">
+				<img src="../static/img/bell.png" class="icon" />
+				<div class="icon_label">Notifications</div>
+			</a>
+		</div>
+		<!-- <div class="icon_label_wrap">
+			<a href="/create-lead" target="iframe">
+				<img src="../static/img/add.png" class="icon" />
+				<div class="icon_label">Create Lead</div>
+			</a>
+		</div> -->
+
+		<div class="icon_label_wrap">
+			<a href="/profile" target="iframe">
+				<img src="../static/img/profile.png" class="icon" />
+				<div class="icon_label">Profile</div>
+			</a>
+		</div>
+
+		<div class="icon_label_wrap">
+			<a href="/logout">
+				<img src="../static/img/logout.png" class="icon" />
+				<div class="icon_label">Log Out</div>
+			</a>
+		</div>
+
+	</div>
+</div>
+
+<div class="main_sec">
+
+<div class="left_sec">
+	<div class="left_sec_wrap">
+		<div class="name">Hi {{name}}</div>
+		<div class="desig_txt">Site Engineer</div>
+
+		<div class="search_input">
+			<input type="text" placeholder="Search Leads">
+			<button>
+				<img src="../static/img/search.png" style="width:20px;margin-top:3px;height:20px;"/>
+			</button>
+		</div>
+
+		<!-- <div class="earning">
+			<div class="earn_txt">All Leads:</div>
+			<div class="money_val"> {{all}}</div>
+		</div> -->
+
+		<div class="boxes">
+			<div class="row1">
+				<a href="/site-engineer-pending" class="box box1" target="iframe">
+					<div class="box_cont">
+						<div class="sub_heading">Pending Leads</div>
+						<div class="num">{{pending}}</div>
+					</div>
+				</a>
+
+				<a href="/site-engineer-vip" class="box box2" target="iframe">
+					<div class="box_cont">
+						<div class="sub_heading">Visit in Progress</div>
+						<div class="num">{{vip}}</div>
+					</div>
+				</a>
+			</div>
+			<div class="row2">
+				<a href="/site-engineer-visited" class="box box3" target="iframe">
+					<div class="box_cont">
+						<div class="sub_heading">Visited Leads</div>
+						<div class="num">{{Visited}}</div>
+					</div>
+				</a>
+
+				<a href="/site-engineer-tbi" class="box box4" target="iframe">
+					<div class="box_cont">
+						<div class="sub_heading">To Be Installed</div>
+						<div class="num">{{tbi}}</div>
+					</div>
+				</a>
+
+			</div>
+			<div class="row2">
+				<a href="/site_engineer_complete" class="box box6" target="iframe">
+					<div class="box_cont">
+						<div class="sub_heading">Completed Leads</div>
+						<div class="num">{{completed}}</div>
+					</div>
+				</a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="right_sec">
+	<iframe src="/channel-home" name="iframe" id="iframe"> </iframe>
+</div>
+
+
+</div>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+
+</body>
+</html>

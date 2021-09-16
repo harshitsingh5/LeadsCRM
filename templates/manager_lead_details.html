@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manager | XYZ </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/admin.css">
+  <!-- <link rel="stylesheet" href="../static/css/simple-grid.css"> -->
+  <link rel="stylesheet" href="../static/css/font.css">
+
+
+
+</head>
+<body>
+
+<div style="display: flex;flex-direction:row;align-items:center;">
+<img src="../static/img/back_btn.png" style="width:40px;" class="back_btn" onclick="history.go(-1);return false;" />
+<div class="heading_sup mar_l_20">LEAD DETAILS</div>
+</div>
+
+
+<div class="status_wrap">
+  <div class="status_cont">
+    <div class="lead_name_date">
+      <div class="lead_name">Lead Id: {{lead.lead_id}}</div>
+      <div class="date">Created On: {{lead.generation_date}}</div>
+    </div>
+    <div class="status">Status : {{leadstatus[lead.lead_status|string]}}</div>
+  </div>
+</div>
+
+
+
+
+
+<div class="sal_cl_wrap">
+
+  <div class="sal_wrap">
+    <div class="heading_sub">SALES PERSON:</div> <br>
+    <div class="name">{{sales_name}}</div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_min">Emp. id :</div>
+      <div class="id">&nbsp; {{sales_id}}</div> <br>
+    </div>
+    <div style="display:flex;flex-direction:row;align-items:center">
+      <div class="id">Status :</div>
+      <div class="id"> &nbsp; {{sales_status[lead.lead_status_by_sales|string]}}</div>
+    </div>
+    <div class="heading_sub mar_t">Remarks:</div>
+      <br>
+
+      <!-- Jinja 2 sales here starts -->
+{% if s_r %}
+{% for r in s_r %}
+      <div style="display: flex;flex-direction: row;align-items: center;">
+        <div class="date_min">{{r.date}}</div>
+        <hr class="hr_sub">
+
+      </div>
+        <div class="heading_min">SALES</div>
+      <div class="remark_cont" style="margin-top:5px;">
+        {{r.remark}}
+          </div><br>
+{% endfor %}
+{% endif %}
+    <!-- Jinja2 sales ends here -->
+
+      <br><br>
+    <div class="heading_sub mar_t">MANAGER:</div> <br>
+    <div class="name">{{manager_name}}</div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_min">Emp. id :</div>
+      <div class="id">&nbsp;{{manager_id}}</div>
+    </div>
+    <div style="display:flex;flex-direction:row;align-items:center">
+      <div class="id">Status :</div>
+      <div class="id"> &nbsp; {{manager_status[lead.lead_status_by_manager|string]}}</div>
+    </div>
+      <div class="heading_sub mar_t">Add Remarks:</div>
+
+      <form action="/manager-save-remark/{{lead.lead_id}}" method="POST">
+        <textarea style="" class="manager_txtarea" name="remark"></textarea> <br>
+        <button class="submit_btn">SAVE</button>
+      </form>
+
+
+    <div class="heading_sub mar_t">Remarks:</div>
+      <br>
+
+
+      {% if m_r %}
+      {% for r in m_r %}
+            <div style="display: flex;flex-direction: row;align-items: center;">
+              <div class="date_min">{{r.date}}</div>
+              <hr class="hr_sub">
+
+            </div>
+              <div class="heading_min">MANAGER</div>
+            <div class="remark_cont" style="margin-top:5px;">
+              {{r.remark}}
+                </div><br>
+      {% endfor %}
+      {% endif %}
+
+
+
+
+      <br><br>
+    <div class="heading_sub mar_t">SITE ENGINEER:</div> <br>
+    <div class="name">{{site_engineer_name}}</div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_min">Emp. id :</div>
+      <div class="id">&nbsp;{{site_engineer_id}}</div>
+    </div>
+    <div style="display:flex;flex-direction:row;align-items:center">
+      <div class="id">Status :</div>
+      <div class="id"> &nbsp; {{site_engineer_status[lead.lead_status_by_site_engineer|string]}}</div>
+    </div>
+
+    <div class="heading_sub mar_t">Remarks:</div>
+      <br>
+
+
+      {% if se_r %}
+      {% for r in se_r %}
+            <div style="display: flex;flex-direction: row;align-items: center;">
+              <div class="date_min">{{r.date}}</div>
+              <hr class="hr_sub">
+
+            </div>
+              <div class="heading_min">SITE ENGINEER</div>
+            <div class="remark_cont" style="margin-top:5px;">
+              {{r.remark}}
+                </div><br>
+      {% endfor %}
+      {% endif %}
+
+
+
+
+      <br><br>
+    <div class="heading_sub mar_t">ACCOUNT OFFICER:</div> <br>
+    <div class="name">{{account_officer_name}}</div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_min">Emp. id :</div>
+      <div class="id">&nbsp;{{account_officer_id}}</div>
+    </div>
+    <div style="display:flex;flex-direction:row;align-items:center">
+      <div class="id">Status :</div>
+      <div class="id"> &nbsp; {{account_officer_status[lead.lead_status_by_account_officer|string]}}</div>
+    </div>
+
+    <div class="heading_sub mar_t">Remarks:</div>
+      <br>
+
+      {% if ao_r %}
+      {% for r in ao_r %}
+            <div style="display: flex;flex-direction: row;align-items: center;">
+              <div class="date_min">{{r.date}}</div>
+              <hr class="hr_sub">
+
+            </div>
+              <div class="heading_min">ACCOUNT OFFICER</div>
+            <div class="remark_cont" style="margin-top:5px;">
+              {{r.remark}}
+                </div><br>
+      {% endfor %}
+      {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Jinja2 manager ends here -->
+
+  </div>
+
+
+
+  <div class="cl_wrap">
+    <div class="heading_sub mar_t">CLIENT DETAILS:</div> <br>
+    <div class="name">{{client.name}}</div>
+    <div class="name">+91 {{client.mobile_number}}</div>
+    <div class="name">{{client.email}}</div>
+      <br>
+
+    <div class="heading_sub mar_t">ENQUIRY FOR</div>
+    <!-- Jinja2 here -->
+    <div class="name mar_t">{{lead.enquiry_for}}</div>
+    <div class="name">{{lead.package_type}}</div>
+    <!-- Jinja2 here -->
+
+    <br><br><br>
+    <!-- <button class="down_btn">Download Invoice</button> -->
+{% if lead.lead_status_by_manager==1000 %}
+    <div class="app_rej_btn_wrap">
+      <a href="/manager-approve/{{lead.lead_id}}"><button class="app_btn">Approve</button></a>
+      <a href="/manager-reject/{{lead.lead_id}}"><button class="rej_btn mar_l_10">Reject</button></a>
+    </div>
+{% endif %}
+  </div>
+
+
+</div><!-- sal_cl_wrap -->
+
+<br><br>
+<hr style="width:90%;border:0.7px solid #dadada">
+
+<div class="heading_sup mar_t" style="text-align:center;">DETAILS</div>
+
+<div class="det_wrap">
+
+  <div class="poc_wrap">
+      <br>
+    <!-- <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">POC (DIOS) :</div>
+      <div class="id"> &nbsp; Harshit Singh</div>
+    </div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">POC (PPF):</div>
+      <div class="id"> &nbsp; Manish Pandey</div>
+    </div> -->
+
+    <br>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">WELCOME CALL:</div>
+  {% if lead.welcome_call==1 %}
+      <div class="status_val"> &nbsp; DONE</div>
+  {% else %}
+      <div class="status_val"> &nbsp; NOT DONE</div>
+  {% endif %}
+    </div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">WELCOME EMAIL:</div>
+  {% if lead.welcome_call==1 %}
+      <div class="status_val"> &nbsp; DONE</div>
+  {% else %}
+      <div class="status_val"> &nbsp; NOT DONE</div>
+  {% endif %}
+    </div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">INITIAL OFFER:</div>
+  {% if lead.initial_offer %}
+      <div class="status_val"> &nbsp; SENT</div>
+  {% else %}
+      <div class="status_val"> &nbsp; NOT SENT</div>
+  {% endif %}
+    </div>
+
+  {% if lead.initial_offer %}
+    <div class="remark_cont" style="margin-top:5px;">
+        {{lead.initial_offer}}
+    </div>
+  {% endif %}
+
+        <br>
+      <div class="heading_sup mar_t">LEAD STATUS</div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;margin-top:10px;">
+      <div class="heading_sub ">Status:</div>
+      <div class="lead_status_val"> &nbsp; {{leadstatus[lead.lead_status|string]}}</div>
+    </div>
+{% if lead.lead_status_by_manager==2 %}
+    <form style="flex-direction: row;display: flex;align-items: center;margin-top:10px;" action="/manager-save-status/{{lead.lead_id}}" method="POST">
+       <div class="heading_sub ">Status By Manager:</div>
+       <select class="man_select" name="status">
+         <option selected disabled>Select</option>
+         <option value="yes">Completed By Manager (Pay Channel Partner)</option>
+         <option value="no">Not Yet Completed</option>
+       </select>
+       <button class="man_status_btn">Submit</button>
+     </form>
+{% endif %}
+   <form style="flex-direction: row;display: flex;align-items: center;margin-top:10px;" action="/manager-change-lead-status/{{lead.lead_id}}" method="POST">
+      <div class="heading_sub " >Change Lead Status:</div>
+      <select class="man_select" name="status">
+        <option selected disabled>Select</option>
+        <option value="Pending">Pending</option>
+        <option value="Active">Active</option>
+        <option value="Closed">Closed</option>
+        <option value="Dismissed">Dismissed</option>
+      </select>
+      <button class="man_status_btn">Submit</button>
+    </form>
+
+    <div class="remark_cont" style="margin-top:5px;">
+      {{lead.lead_status_remark}}
+    </div>
+
+  </div> <!-- poc_wrap -->
+
+
+  <!-- <div class="int_wrap">
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">No. of client meetings:</div>
+      <div class="name"> &nbsp; 2</div>
+    </div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">Site measurements:</div>
+      <div class="name"> &nbsp; 75</div>
+    </div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">Revision Number:</div>
+      <div class="name"> &nbsp; 1497234</div>
+    </div>
+
+    <div style="flex-direction: row;display: flex;align-items: center;">
+      <div class="heading_sub">Order Value:</div>
+      <div class="name"> &nbsp; 4.72 lpa</div>
+    </div>
+  </div>  int_wrap -->
+
+</div> <!-- det_wrap -->
+
+<div style="padding-bottom: 40px;"></div>
+
+
+
+<script>
+
+  var b=new Date(20-10-2019);
+  console.log(b);
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+</body>
+</html>

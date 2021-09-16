@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XYZ </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/admin.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+
+	<!-- <link rel="stylesheet" href="../static/css/simple-grid.css"> -->
+
+</head>
+<body>
+
+	<div class="wel_wrap">
+		<div class="heading_b">Select Status</div>
+	</div>
+
+	<br><br>
+{% if account_type==3 and (lead.lead_status_by_site_engineer==0 or lead.lead_status_by_site_engineer==1) %}
+	<form  action="/site-engineer-save-status1/{{lead.lead_id}}" method="POST">
+		<select class="sales_select" name="status" >
+				<option selected disabled>Select Status</option>
+				<option value="vip">Visit in Progress</option>
+				<option value="Visited">Visited</option>
+		</select>
+		<br>
+		<div class="heading_sup">Enter Remarks</div>
+		<div style="margin-top:10px;"></div>
+		<textarea name="remark" class="sales_txtarea"></textarea>
+		<br>
+		<button class="sub_btn">SUBMIT</button>
+	</form>
+{% endif %}
+{% if account_type==3 and (lead.lead_status_by_site_engineer==3) %}
+<br><br>
+<div style="display: flex;flex-direction: row;align-items: center;">
+	<div class="id">Installation date remark : </div>
+	<div class="id"> &nbsp; {{lead.installation_date_remark}}</div>
+</div>
+<br>
+
+<form name="form" onsubmit="return valid();" action="/site-engineer-save-status2/{{lead.lead_id}}" method="POST" enctype="multipart/form-data">
+		<select class="sales_select" name="status" required>
+				<option selected disabled value="">Select Status</option>
+				<option value="ins">Installed</option>
+				<option value="noins">Not Installed</option>
+		</select>
+		<br>
+		<div class="heading_sup">Enter Remarks</div>
+		<div style="margin-top:10px;"></div>
+		<div class="id">Upload Customer Feedback: <input type="file" name="filee" required></div>
+		<div style="margin-top:10px;"></div>
+		<textarea name="remark" class="sales_txtarea"></textarea>
+		<br>
+		<button class="sub_btn" >SUBMIT</button>
+</form>
+{% endif %}
+
+
+	<br>
+	<div class="heading_sup mar_t">Remarks:</div>
+			<br>
+			<!-- Jinja 2 sales here starts -->
+			{% for r in remarks %}
+			<div style="display: flex;flex-direction: row;align-items: center;margin-top:30px">
+					<div class="date_min">{{r.date}}</div>
+				<hr class="hr_sub">
+			</div>
+			<div class="heading_sub">Site Engineer:</div>
+			<div class="remark_cont" style="margin-top:5px;">
+					{{r.remark}}
+			</div>
+{% endfor %}
+
+		<!-- Jinja2 sales ends here -->
+
+<script>
+	var status=document.forms["form"]["status"];
+
+
+	if(status==''){
+		alert("ENTER STATUS");
+		return false;
+	}
+
+	return true;
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+</body>
+</html>

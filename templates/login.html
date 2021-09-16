@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XYZ | Login </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/login.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+	<link rel="stylesheet" href="../static/css/simple-grid.css">
+</head>
+<body>
+
+
+				<img class="logo" src="../static/img/logo.png" />
+<div class="wrap">
+		<div class="left_area">
+
+
+
+				<!-- <div class="dont_have_acc">
+					Don't Have an Account?<br>
+					<a href="/get/sign">CREATE NEW ACCOUNT</a>
+				</div> -->
+		</div>
+
+		<div class="input_area">
+
+					<div class="col-12 wel_txt" style="font-family:'PN-Bold' ">
+						Hi,<br>
+						<font style="color:#2575fc;">LOGIN</font> to continue
+					</div>
+
+				<br><br>
+
+				<div style="color:red;font-size:1em;font-family:'SF' " id="msg"></div>
+				<form name="form" onsubmit="return valid();" action="/login1" method="POST">
+					<input type="text" placeholder="MOBILE NUMBER" name="mob" onkeypress="return isNumber(event)" maxlength="10"> <br><br>
+					<button class="login_btn">LOGIN</button>
+
+				</form>
+		</div>
+</div>
+
+
+<script>
+  function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+
+function valid(){
+  var mob=document.forms["form"]["mob"];
+
+  if(mob.value.length <10){
+    document.getElementById("msg").innerHTML="Enter Valid Number";
+    return false;
+  }else
+
+  return true;
+
+}
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+</body>
+</html>

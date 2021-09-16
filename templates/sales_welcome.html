@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Call | XYZ </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/admin.css">
+	<link rel="stylesheet" href="../static/css/font.css">
+
+	<!-- <link rel="stylesheet" href="../static/css/simple-grid.css"> -->
+
+</head>
+<body>
+
+	<div class="wel_wrap">
+		<div class="heading_b">{{head}}</div>
+		{% if head=="Welcome Call" %}
+		<form action="/sales-welcome-call/{{lead_id}}" method="POST">
+		<!-- <a href="/sales-welcome-call/{{lead_id}}"><button class="next_btn">Next</button></a> -->
+		{% elif head=="Welcome Email" %}
+		<form action="/sales-welcome-email/{{lead_id}}" method="POST">
+		<!-- <a href="/sales-welcome-email/{{lead_id}}"><button class="next_btn">Next</button></a> -->
+		{% endif %}
+		</div>
+
+		<div class="status">
+			Lead id: {{lead_id}}
+		</div>
+
+
+	<!-- <form action="/add-remark/{{lead_id}}" method="POST"> -->
+		<div style="margin-top:10px;"></div>
+		<textarea class="sales_txtarea" name="remark"></textarea>
+		<br>
+			<button class="sub_btn">NEXT</button>
+	</form>
+
+	<br>
+
+	<div class="heading_sup mar_t">Remarks:</div>
+			<br>
+			<!-- Jinja 2 sales here starts -->
+			{% for r in remarks %}
+			<div style="display: flex;flex-direction: row;align-items: center;margin-top:30px">
+					<div class="date_min">{{r.date}}</div>
+				<hr class="hr_sub">
+			</div>
+			<div class="heading_sub">{{account}}:</div>
+			<div class="remark_cont" style="margin-top:5px;">
+					{{r.remark}}
+			</div>
+{% endfor %}
+		<!-- Jinja2 sales ends here -->
+
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script type="text/javascript">
+		  {% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    {% for message in messages %}
+		      swal('{{message}}');
+		    {% endfor %}
+		  {% endif %}
+		{% endwith %}
+		</script>
+</body>
+</html>

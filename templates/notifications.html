@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>lead-details-10</title>
+	<link rel="stylesheet" href="../static/css/fonts.css">
+	<style>
+
+	*{
+		font-family: 'SF';
+	}
+		.border{
+			display: flex;
+			flex-direction: row;
+			border-radius: 25px;
+			background-color: #FFF;
+			border: 2px solid #F5F5F5;
+			padding: 30px 20px 20px 30px;
+			font-family: proxima-nova;
+			margin: left;
+			margin-top: 30px;
+			}
+
+		.notifications{
+			margin: left;
+			font-weight: bold;
+			flex: 1;
+			font-size: 20px;
+		}
+		.text{
+
+		    flex: 1;
+		    text-align:left;
+		    font-size: 20px;
+		}
+		.dismiss{
+			align-content: right;
+			flex: 1;
+		}
+
+.c1{  flex:9;
+}
+.c2{
+	flex:1;
+}
+
+	</style>
+</head>
+	<body>
+		<h1 style="font-family: proxima-nova; margin-left: 10px;">Notifications</h1>
+			<div class="border">
+				<div class="c1"><div class="notifications">Notification-1</div>
+				<div class="text"><p>Lorem ipsum dolor sit amet,consetetur sadipscing elitr,sed diam nonumy eirmod</p></div></div>
+				<div class="c2"><div class="dismiss" style="align-content: right;"><img src="https://img.icons8.com/color/48/000000/cancel--v1.png">
+					<br>Dismiss</div></div></div>
+
+			</div>
+
+			<div class="border">
+				<div class="c1"><div class="notifications">Notification-2</div>
+				<div class="text"><p>Lorem ipsum dolor sit amet,consetetur sadipscing elitr,sed diam nonumy eirmod</p></div></div>
+				<div class="c2"><div class="dismiss" style="align-content: right;"><img src="https://img.icons8.com/color/48/000000/cancel--v1.png">
+					<br>Dismiss</div></div></div>
+
+			</div>
+
+
+			<!-- <div class="border">
+				<div class="c1"><div class="notifications">Notification-3</div>
+				<div class="text"><p>Lorem ipsum dolor sit amet,consetetur sadipscing elitr,sed diam nonumy eirmod</p></div></div>
+				<div class="c2"><div class="dismiss" style="align-content: right;"><img src="https://img.icons8.com/color/48/000000/cancel--v1.png">
+					<br>Dismiss</div></div></div> -->
+
+			</div>
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+			<script type="text/javascript">
+			  {% with messages = get_flashed_messages() %}
+			  {% if messages %}
+			    {% for message in messages %}
+			      swal('{{message}}');
+			    {% endfor %}
+			  {% endif %}
+			{% endwith %}
+			</script>
+	</body>
+	</html>

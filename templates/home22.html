@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<title>Minimum Bootstrap HTML Skeleton</title>
+
+	<!--  -->
+
+	<style>
+
+	</style>
+
+</head>
+
+<body>
+    <h1 style="padding-left: 20px;"> <b>Home</b></h1>
+    <br>
+	<div class="container-fluid" style="overflow-x: hidden;overflow-y: auto;">
+       <div class="row">
+
+         <div class="col-lg-12">
+       <img src="../static/img/im1.jpg" alt="" class="img-fluid" style="width: 100%; height:300px;border-radius:20px;">
+    </div>
+    <div class="row">
+        <div class="col-lg-12" style="line-height: 2em;font-size:1.5em;font-family: serif;">
+            <h3 style="padding-left:20px;padding-right:20px;text-align: justify;"> <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+    </div>
+
+       </div>
+ 	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script>
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript">
+	  {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+	      swal('{{message}}');
+	    {% endfor %}
+	  {% endif %}
+	{% endwith %}
+	</script>
+</body>
+
+</html>

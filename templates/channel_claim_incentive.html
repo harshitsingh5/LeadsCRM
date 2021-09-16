@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XYZ | Claim Incentive </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/login.css">
+  <link rel="stylesheet" href="../static/css/font.css">
+  <link rel="stylesheet" href="../static/css/admin.css">
+  <link rel="stylesheet" href="../static/css/simple-grid.css">
+</head>
+<body>
+
+
+<div class="create_wrapper_2">
+
+<div style="display: flex;flex-direction:row;align-items:center;">
+<img src="../static/img/back_btn.png" style="width:40px;" class="back_btn" onclick="history.go(-1);return false;" />
+<div class="heading_sup mar_l_10">CLAIM INCENTIVES</div>
+</div>
+
+
+
+<form  name="form" class="create_1_form"  onsubmit="return valid();"  action="/claim-incentives" method="POST">
+
+    <div style="margin-top:10px;"></div>
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="emailmsg"></div>
+    <input type="email"   name="company_name" placeholder="COMPANY NAME (if exists)">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="personmsg"></div>
+    <input type="text"   name="contact_person_name"   placeholder="CONTACT PERSON NAME">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="contactmsg"></div>
+    <input type="text"   name="contact_person_contact_no" maxlength="10"  onkeypress="return isNumber(event)"  placeholder="CONTACT NUMBER">
+
+    <div style="color:red;font-size:1em;font-family:'SF' "></div>
+    <input type="text"   name="alternate_number"  maxlength="10"  onkeypress="return isNumber(event)"  placeholder="ALTERNATE CONTACT (optional)">
+
+    <!-- <div style="color:red;font-size:1em;font-family:'SF' " id="statemsg"></div> -->
+    <input type="text"   name="upi_no"   placeholder="UPI NUMBER">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="accmsg"></div>
+    <input type="text"  name="account_number"  placeholder="ACCOUNT NUMBER"   onkeypress="return isNumber(event)">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="ifscmsg"></div>
+    <input type="text"   name="ifsc" placeholder="IFSC">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="namemsg"></div>
+    <input type="text"   name="name" placeholder="ACCOUNT HOLDER NAME" style="border:1px solid #a9a9a9;">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="bankmsg"></div>
+    <input type="text"   name="bank" placeholder="BANK NAME">
+
+    <div style="color:red;font-size:1em;font-family:'SF' " id="branchmsg"></div>
+    <input type="text"   name="branch" placeholder="BRANCH NAME">
+
+    <!-- <div style="color:red;font-size:1em;font-family:'SF' " id="packagemsg"></div> -->
+    <input type="text"   name="gst_no" placeholder="GST NUMBER (optional)">
+
+    <!-- <div style="color:red;font-size:1em;font-family:'SF' " id="packagemsg"></div> -->
+    <input type="text"   name="pan_no" placeholder="PAN NUMBER(optional)">
+
+
+    <br><br>
+    <button class="login_btn">SUBMIT</button>
+    <div  style="margin-top:30px;"></div>
+</form>
+
+
+</div>
+
+<br><br>
+
+<script>
+  function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
+</script>
+
+<script>
+
+function valid(){
+  var personname=document.forms["form"]["contact_person_name"];
+  var contact=document.forms["form"]["contact_person_contact_no"];
+  var accnum=document.forms["form"]["account_number"];
+  var ifsc=document.forms["form"]["ifsc"];
+  var name=document.forms["form"]["name"];
+  var bank=document.forms["form"]["bank"];
+  var branch=document.forms["form"]["branch"];
+
+  var string=/^[A-Za-z\s]+$/;
+
+
+
+   if(!(personname.value.match(string))){
+      document.getElementById("personmsg").innerHTML="Enter Valid Name";
+  }else{
+      document.getElementById("personmsg").innerHTML="";
+  }
+
+
+  if(contact.value.length <10){
+    document.getElementById("contactmsg").innerHTML="Enter Valid Contact Number";
+  }else{
+    document.getElementById("contactmsg").innerHTML="";
+  }
+
+
+
+
+  if(accnum.value==''){
+    document.getElementById("accmsg").innerHTML="Enter Account Number";
+  }else{
+      document.getElementById("accmsg").innerHTML="";
+  }
+
+   if(ifsc.value==''){
+    document.getElementById("ifscmsg").innerHTML="Enter IFSC code";
+  }else{
+      document.getElementById("ifscmsg").innerHTML="";
+  }
+
+
+   if(!(name.value.match(string))){
+      document.getElementById("namemsg").innerHTML="Enter Valid account holder name";
+  }else{
+      document.getElementById("namemsg").innerHTML="";
+  }
+
+
+
+
+  if(bank.value==''){
+    document.getElementById("bankmsg").innerHTML="Enter Bank Name";
+  }else{
+      document.getElementById("bankmsg").innerHTML="";
+  }
+
+  if(branch.value==''){
+    document.getElementById("branchmsg").innerHTML="Enter Branch Name";
+    return false;
+  }else{
+      document.getElementById("branchmsg").innerHTML="";
+  }
+
+
+
+   if( !(personname.value.match(string)) || contact.value.length <10 || accnum.value=='' || ifsc.value=='' ||
+      !(name.value.match(string)) || bank.value=='' || branch.value==''){
+        return false;
+  }
+
+
+
+
+  return true;
+
+
+
+}
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+</body>
+</html>

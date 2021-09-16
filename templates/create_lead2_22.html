@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Login</title>
+
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <style>
+@font-face  {
+  font-family:'ProximaNova-Bold';
+  src: url("ProximaNova-Bold.ttf") format('truetype');
+
+}
+@font-face {
+  font-family: 'SF-Regular';
+src: url("SF-Regular.ttf") format('truetype');
+}
+b
+{
+  font-family: 'ProximaNova-Bold' !important;
+}
+input
+{
+  font-family: 'SF-Regular' !important;
+}
+h4
+{
+  font-family: 'SF-Regular' !important;
+color:grey;
+}
+#logo
+{
+    margin-top:4%;
+}
+.form-group
+{
+  width:25%;
+  min-width:280px;
+  height:30%;
+  padding-top:20px;
+
+}
+img
+{
+  width: 100px;
+  height: 60px;
+}
+#create_account
+{
+  width:25%;
+  background-color:#E15249;
+  border-style:none;
+}
+input
+{
+  padding-top:15px;
+  padding-bottom: 15px;
+  margin-top: 10px;
+margin-bottom:10px;
+font-family: 'ProximaNova-Bold' ;
+border:1px solid #B8B7B7 ;
+
+}
+select
+{
+  margin-top:10px;
+}
+@media only screen and (max-width: 600px) {
+.header
+{
+  margin-left: 10%;
+}
+}
+</style>
+ </head>
+ <body>
+
+
+<center>
+     <form style="margin-top:30px;" action="/create-lead2/{{lead_id}}/{{client_id}}" method="POST">
+        <b style="font-size: 20px;padding-bottom:20px;">CREATE LEAD</b>
+                <div class="form-group">
+
+                  <input type="email" class="form-control" id="email" name="email" aria-describedby="ProximaNova-Bold" placeholder="CLIENT EMAIL ADDRESS">
+                  <input type="text" class="form-control" id="address1" name="address1" aria-describedby="ProximaNova-Bold" placeholder="FLAT NUMBER,BUILDING">
+                  <input type="text" class="form-control" id="address2" name="address2" aria-describedby="ProximaNova-Bold" placeholder="LOCALITY, STREET">
+                  <input type="text" class="form-control" id="city" name="city" aria-describedby="ProximaNova-Bold" placeholder="CITY">
+                  <input type="text" class="form-control" id="state" name="state" aria-describedby="ProximaNova-Bold" placeholder="STATE">
+                  <input type="number" class="form-control" id="pincode" name="pincode" aria-describedby="ProximaNova-Bold" placeholder="PIN CODE">
+
+
+                  <input type="text" class="form-control" id="enquiry_for" name="enquiry_for" placeholder="ENQUIRY FOR">
+                  <input type="text" class="form-control" id="package_type" name="package_type" placeholder="PACKAGE TYPE">
+
+
+
+                </div>
+              <button type="submit" class="btn btn-primary" id="create_account" >CREATE</button><br>
+              </form>
+            </center>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript">
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  swal('{{message}}');
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            </script>
+</body>
+</html>

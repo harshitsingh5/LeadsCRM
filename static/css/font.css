@@ -1,0 +1,11 @@
+@font-face{
+	font-family:'SF';
+	src:url('../fonts/SF-Regular.ttf') format('truetype');
+}
+
+
+@font-face{
+	font-family:'PN-Bold';
+	src:url('../fonts/ProximaNova-Bold.ttf') format('truetype');
+}
+

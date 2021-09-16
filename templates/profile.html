@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Details | XYZ </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="../static/css/admin.css">
+	<link rel="stylesheet" href="../static/css/profile.css">
+	<!-- <link rel="stylesheet" href="../static/css/simple-grid.css"> -->
+	<link rel="stylesheet" href="../static/css/font.css">
+
+
+
+</head>
+<body>
+
+<div class="heading_sup">PROFILE DETAILS</div>
+
+
+
+
+<div class="prof_det_wrap">
+
+	<div class="prof_wrap">
+		<div class="prof">
+			<div class="prof_img_cont">
+				<img src="/get-image/{{r['pp']}}?rnd="+Math.random() />
+			</div>
+		</div>
+	</div>
+
+
+
+		 <div class="det_wrap" >
+
+			<div>{{r['name']}}</div>
+			<div>{{r['mobile_no']}}</div>
+			<div>{{r['email']}}</div>
+			<div>{{r['account_type']}}</div>
+	</div>
+
+</div><!-- sal_cl_wrap -->
+
+ <div class="heading_sub" style="margin-top:50px;">Profile Options</div>
+ <br>
+ <div class="opts">
+ 	<a href="#" style="display: flex;flex-direction: row;align-items: center;">
+ 		<img src="../static/img/user.png" style="width:25px;"/>
+		<form action="/profileimageupdate" method="POST" enctype="multipart/form-data">
+ 		<input type="file" id="chprof" name="pfile" style="border:1px solid #dadada;border-radius:0px;">
+		<button class="btn_round_thin_r">Update Profile Picture</button>
+	</form>
+ 	</a>
+
+ 	{% if r['account_type']=="Channel Partner" %}
+ 	<a href="/update-bank-details-page" style="display: flex;flex-direction: row;align-items: center;">
+ 		<img src="../static/img/bank.png" style="width:25px;"/>
+ 		<div class="name" style="margin-left:10px;">Update Account Details</div>
+ 	</a>
+ 	{% endif %}
+
+ 	<!-- <a href="#" style="display: flex;flex-direction: row;align-items: center;">
+ 		<img src="../static/img/lock.png" style="width:25px;"/>
+ 		<div class="name" style="margin-left:10px;">Change Password</div>
+ 	</a> -->
+ </div>
+
+
+
+
+<div style="padding-bottom: 40px;"></div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      swal('{{message}}');
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</script>
+
+</body>
+</html>

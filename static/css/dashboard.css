@@ -1,0 +1,332 @@
+@font-face{
+	font-family:'SF';
+	src:url('../fonts/SF-Regular.ttf') format('truetype');
+}
+
+
+@font-face{
+	font-family:'PN-Bold';
+	src:url('../fonts/ProximaNova-Bold.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:'Bariol-Bold';
+	src:url('../fonts/Bariol-Bold.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:'Bariol-Regular';
+	src:url('../fonts/Bariol-Regular.ttf') format('truetype');
+}
+
+*{
+	font-family:'Bariol-Regular';
+}
+a{
+	text-decoration: none;
+}
+html,body{
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+}
+
+body{
+	background-color: #252A40;
+	overflow-y:hidden;
+}
+
+.logo{
+	width:90px;
+	margin-left:3px;
+	margin-top:10%;
+}
+
+.sidebar{
+	width:100px;
+	height:100vh;
+	background-color: #3A3F53;
+	position: fixed;
+	top:0;
+	left: 0;
+
+
+}
+
+.sidebar .icon{
+	width:40px;
+}
+
+.sidebar_wrap{
+	display: flex;
+	flex-direction:column;
+	align-items: center;
+	margin-top:50%;
+}
+
+.icon_label_wrap{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.icon_label_wrap a{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-decoration: none;
+}
+
+
+
+.icon_label{
+	color:#797C8A;
+	font-size:1em;
+}
+
+.main_sec{
+	display: flex;
+	flex-direction: row;
+	margin-left:100px;
+	flex-wrap: wrap;
+}
+
+.left_sec{
+	flex:0.7;
+
+}
+
+.left_sec_wrap{
+ 	padding-left:10%;
+ 	padding-top:5%;
+}
+
+.right_sec{
+	flex:1;
+	background-color: #fff;
+	height: 100vh;
+	border-top-left-radius:40px;
+	border-bottom-left-radius:40px;
+}
+
+.name{
+	color:#fff;
+	font-size: 3em;
+	font-family: 'Bariol-Bold';
+}
+
+.desig_txt{
+	color:#fff;
+	font-size: 1.3em;
+	margin-top:-8px;
+}
+
+.search_input{
+	display: flex;
+	flex-direction: row;
+	margin-top:5%;
+}
+
+.search_input input{
+	width:60%;
+	height: 40px;
+	min-width: 200px;
+	border-radius:50px;
+	border:none;
+	padding-left: 10px;
+	background-color:#3A3F53;
+	font-size:1.2em;
+	color:#fff;
+}
+
+input:focus{
+	outline: none;
+}
+
+::placeholder{
+	color:rgba(255,255,255,0.32);
+}
+.search_input button{
+	margin-left: -40px;
+	border-radius: 50%;
+	width:37px;
+	margin-top: 2.5px;
+	height:37px;
+	border:none;
+	background-color:rgba(255,255,255,0.15);
+}
+
+.search_input button:hover{
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.boxes{
+	display: flex;
+	flex-direction: column;
+	margin-top:2%;
+}
+
+.row1{
+	display: flex;
+	flex-direction: row;
+}
+
+.row2{
+	display: flex;
+	flex-direction: row;
+}
+
+.box{
+	flex:0.37;
+	padding-bottom:30px;
+	margin-left:20px;
+	margin-top:20px;
+	background-color: red;
+	border-radius: 18px;
+}
+
+.earning{
+	display: flex;
+	flex-direction:row;
+	align-items: center;
+	margin-left:20px;
+	margin-top:5%;
+}
+
+.earn_txt{
+	font-size: 1.3em;
+	color:#fff;
+}
+
+.money_val{
+	color:#fff;
+	font-size:2.5em;
+	font-family: 'Bariol-Bold';
+	margin-left:20px;
+}
+
+.box1{
+	background:linear-gradient(135deg,#DD2476 , #F64443 , #FF512F);
+}
+
+.box2{
+	background:linear-gradient(135deg,#155799 ,  #159957);
+}
+
+.box3{
+	background:linear-gradient(135deg,#4568DC ,  #8C69C1 , #B06AB3);
+}
+
+.box4{
+	background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+}
+
+.box5{
+	background: linear-gradient(180deg, #009efd 0%, #2af598 100%);
+}
+.box6{
+	background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+}
+
+.box_cont{
+	display: flex;
+	flex-direction: column;
+	justify-content:space-between;
+	align-items: center;
+	padding-top:30px;
+}
+
+.sub_heading{
+	color:#fff;
+	font-size: 1.1em;
+}
+
+.num{
+	color:#fff;
+	font-family:'Bariol-Bold';
+	font-size:1.5em;
+	padding-top:15%;
+}
+
+.right_sec{
+	padding-left:0px;
+}
+
+iframe{
+	width:100%;
+	border:none;
+	height: 100vh;
+}
+
+@media only screen and (max-width:700px){
+
+	body{
+		overflow-y:scroll;
+	}
+
+	.main_sec{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.left_sec{
+		flex:1;
+	}
+
+	.right_sec{
+		flex:1;
+		margin-top:12vh;
+	}
+
+	.box{
+		padding-bottom:10px;
+		text-align: center;
+	}
+
+	.sidebar_wrap{
+		margin-top:20%;
+	}
+
+	.right_sec{
+		border-bottom-left-radius: 0px;
+		border-top-right-radius: 40px;
+	}
+}
+
+@media only screen and (max-width: 400px){
+	.money_val{
+		font-size:1.8em;
+	}
+
+	.sub_heading{
+		font-size:1.1em;
+	}
+
+	.num{
+		font-size:2em;
+	}
+
+	.box{
+		flex:1;
+	}
+
+	.left_sec_wrap{
+		padding-left:0;
+		padding-right:2%;
+	}
+
+	.name{
+		font-size:2em;
+		margin-left:20px;
+	}
+
+	.desig_txt{
+		margin-left:20px;
+	}
+
+	.search_input{
+		margin-left:20px;
+	}
+}
